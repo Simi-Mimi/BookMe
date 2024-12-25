@@ -18,7 +18,7 @@ public class CalendarEntry {
     @OneToOne
     private Users users; // לא יהיה null אם המשבצת תפוסה
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "calenders_date")
     private Date date;  // תאריך
 

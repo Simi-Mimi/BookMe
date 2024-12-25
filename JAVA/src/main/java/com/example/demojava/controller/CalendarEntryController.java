@@ -1,4 +1,5 @@
 package com.example.demojava.controller;
+import com.example.demojava.DTO.CalendarDayDTO;
 import com.example.demojava.service.CalendarService;
 import com.example.demojava.models.CalendarEntry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class CalendarEntryController {
 
     //GET - החזרת כל המשבצות של בעל מקצוע
     @GetMapping("/getCalendarEntry/{professionalId}")
-    public List<CalendarEntry> getCalendarEntries(@PathVariable Long professionalId) {
+    public List <CalendarDayDTO> getCalendarEntries(@PathVariable Long professionalId) {
         return calendarService.getCalendarEntriesByProfessional(professionalId);
     }
 
@@ -28,8 +29,8 @@ public class CalendarEntryController {
 
     //PUT - עדכון זמינות
     @PutMapping("/updateEntry/{calendarEntryId}")
-    public CalendarEntry updateAvailability(@PathVariable Long calendarEntryId, @RequestParam boolean isAvailable) {
-        return calendarService.updateAvailability(calendarEntryId, isAvailable);
+    public CalendarEntry updateAvailability(@PathVariable Long calendarEntryId, @RequestParam Long userId) {
+        return calendarService.updateAvailability(calendarEntryId,userId);
     }
 
     //DELETE - מחיקת משבצת זמן
